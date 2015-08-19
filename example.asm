@@ -2,7 +2,7 @@ begin:
   SET R2, 0           // R2 = 0
 loop:
   SET R1, 128         // R1 = 128
-  STORE R2, R1, 0     // R2 = M[128]
+  STORE R2, R1, 0     // M[128] = R2
   SET R1, 1           // R1 = 1
   ADD R2, R2, R1      // R2++
   SET R15, loop       // R15 = loop, R15 is return address 
