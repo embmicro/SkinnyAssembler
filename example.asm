@@ -24,4 +24,3 @@ delay_loop:
   SET R0, delay_loop  // goto delay_loop
   SET R1, 0           // R1 = 0
   ADD R0, R15, R1     // R0 = R15 (return)
-  SET R0, delay_loop  // goto delay_loop
