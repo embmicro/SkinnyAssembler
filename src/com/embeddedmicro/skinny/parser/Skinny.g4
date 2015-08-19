@@ -14,7 +14,7 @@ end: NL | COMMENT | BLOCK_COMMENT;
 NAME: [a-zA-Z0-9_]+;
 
 BLOCK_COMMENT: ('/*' .*? '*/');
-COMMENT: ('//' ~[\r\n]* '\r'? '\n');
+COMMENT: ('//' ~[\r\n]* ('\r'? '\n' | EOF));
 
-NL: ('\r'? '\n' | '\r');
+NL: ('\r'? '\n');
 WS: [ \t]+ -> skip;

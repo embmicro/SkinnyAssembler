@@ -61,6 +61,7 @@ public class Assembler extends SkinnyBaseListener {
 	private Assembler() {
 		text = new StringBuilder();
 		labels = new HashMap<>();
+		hasErrors = false;
 		line = 0;
 		walk = 0;
 
@@ -76,7 +77,6 @@ public class Assembler extends SkinnyBaseListener {
 	@Override
 	public void enterSource(SourceContext ctx) {
 		line = 0;
-		hasErrors = false;
 		if (walk > 0)
 			text.replace(0, text.length(), "module instRom (\n" + "    input address[8],\n" + "    output inst[16]\n" + "  ) {\n" + "\n" + "  always {\n"
 					+ "    inst = c{Inst.NOP, 12b0};\n" + "\n" + "    case (address) {\n"); // clear text
@@ -237,5 +237,6 @@ public class Assembler extends SkinnyBaseListener {
 
 	private void printError(Token ctx, String msg) {
 		System.out.println("Error on line " + ctx.getLine() + ": " + msg);
+		hasErrors = true;
 	}
 }
